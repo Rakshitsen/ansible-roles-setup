@@ -1,4 +1,24 @@
----
+- name: Ensure Docker is running
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Download installCRIDockerd.sh script
+  get_url:
+    url: https://raw.githubusercontent.com/lerndevops/labs/master/scripts/installCRIDockerd.sh
+    dest: /tmp/installCRIDockerd.sh
+    mode: '0755'
+
+- name: Run installCRIDockerd.sh script
+  command: bash /tmp/installCRIDockerd.sh
+
+- name: Restart cri-docker service
+  systemd:
+    name: cri-docker.service
+    state: restarted
+    enabled: yes
+
 - name: Ensure /etc/apt/keyrings directory exists
   file:
     path: /etc/apt/keyrings
