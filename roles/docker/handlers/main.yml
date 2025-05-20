@@ -1,0 +1,6 @@
+---
+- name: start docker
+  ansible.builtin.service:
+    name: "{{ docker_package }}"
+    state: started
+    enabled: true

@@ -1,0 +1,17 @@
+---
+- name: Add Jenkins repository key
+  ansible.builtin.apt_key:
+    url: "{{ key_url }}"
+    state: present
+
+- name: Add Jenkins repository
+  ansible.builtin.apt_repository:
+    repo: "{{ repo_url }}"
+    state: present
+
+- name: Install Jenkins
+  ansible.builtin.apt:
+    name: "{{ package_name }}"
+    state: present
+    update_cache: true
+  notify: start jenkins

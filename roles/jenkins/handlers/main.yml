@@ -1,0 +1,6 @@
+---
+- name: start jenkins
+  ansible.builtin.service:
+    name: "{{ package_name }}"
+    state: started
+    enabled: true

@@ -1,0 +1,10 @@
+---
+- name: Update the server package index
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Install OpenJDK 11
+  ansible.builtin.apt:
+    name: "{{ package_name }}"
+    state: present
