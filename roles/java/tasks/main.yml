@@ -4,7 +4,7 @@
     update_cache: true
     cache_valid_time: 3600
 
-- name: Install OpenJDK 11
+- name: Install OpenJDK 17
   ansible.builtin.apt:
     name: "{{ package_name }}"
     state: present
